@@ -23,6 +23,7 @@ function NewRouter() {
                 <Route path="/survey/complete/:language" component={ThankPage} exact/>
                 <Route path="/roten/make_new/:idRoten"  component={RotenSurvey} exact/>
                 <Route path="/make_id/:idBranch" component={MakeIDByList} exact/> */}
+                <Route path="/survey/complete/:language" component={ThankPage} exact/>
                 <Route path="/"  component={TransferToMainWeb} exact/>
                 <Route path="/*"  component={NotFound} exact/>
             </Switch>
