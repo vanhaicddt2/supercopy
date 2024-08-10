@@ -31,9 +31,9 @@ app.use(cookieParser());
 //Router init
 route(app)
 
-// app.get('*', function (req, res) {
-//     res.sendFile(__dirname + "/client/build/index.html");
-// });
+app.get('*', function (req, res) {
+    res.sendFile(__dirname + "/client/build/index.html");
+});
 
 // note 
 const PORT = process.env.PORT || 6000;
