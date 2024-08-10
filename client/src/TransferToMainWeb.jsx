@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import * as useApi from './api/user';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 // import './App.css';
 
 function TransferToMainWeb() {
+  const { name } = useParams();
   const [data, setData] = useState({
     copy1: "",
     copy2: ""
@@ -13,7 +15,7 @@ function TransferToMainWeb() {
 
   useEffect(() => {
       const takeData = async () => {
-         const result = await useApi.getData("vanhaicddt2","token");
+         const result = await useApi.getData(name,"token");
 
          if(result){
             setData({
@@ -37,7 +39,7 @@ function TransferToMainWeb() {
 
   function updateToServer() {
     const updateServer = async () => {
-      const result = await useApi.saveData("vanhaicddt2", data, "token");
+      const result = await useApi.saveData(name, data, "token");
    }
 
    updateServer();
