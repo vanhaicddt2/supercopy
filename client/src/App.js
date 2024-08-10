@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import logo from './logo.svg';
 import * as useApi from './api/index';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import './App.css';

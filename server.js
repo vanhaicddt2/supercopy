@@ -5,14 +5,14 @@ module.exports = exports = mongoose;
 
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
-const path = require('path');
-var cron = require('node-cron');
+// const path = require('path');
+// var cron = require('node-cron');
 const app = express();
 const http = require('http');
 const route = require('./router/index')
 var bodyParser = require('body-parser');
 
-const axios = require('axios');
+// const axios = require('axios');
 
 const { NODE_ENV} = process.env;
 
