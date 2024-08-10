@@ -1,0 +1,41 @@
+{
+  "name": "savelog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "cd client && npm start",
+    "server-install": "npm install",
+    "client-install": "cd client && npm install",
+    "install-all": "concurrently \"npm run server-install\" \"npm run client-install\"",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "cd client && npm install && npm run build",
+    "build": "GENERATE_SOURCEMAP=false react-scripts build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vanhaicddt2/saveLog.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vanhaicddt2/saveLog/issues"
+  },
+  "homepage": "https://github.com/vanhaicddt2/saveLog#readme",
+  "dependencies": {
+    "axios": "^1.7.2",
+    "body-parser": "^1.20.2",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "http": "^0.0.1-security",
+    "mongoose": "^8.4.3",
+    "node-cron": "^3.0.3",
+    "nodemon": "^3.1.4",
+    "path": "^0.12.7"
+  }
+}
