@@ -45,7 +45,7 @@ function TransferToMainWeb() {
 
   return (
     <div className="App p-5" style={{ textAlign:'center', alignItems:'center', margin: 'auto'}}>
-      <h1 style={{width:'100%'}}>Copy Test by Hai</h1>
+      {/* <h1 style={{width:'100%'}}>Copy Test by Hai</h1> */}
       <div style={{color:''}}>MSG: {msg}</div>
       <div class="form-group" style={{ position:'relative'}}>
           <label for="exampleInputEmail1">Text Copy 1</label>
