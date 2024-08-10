@@ -1,33 +1,22 @@
 {
   "files": {
-    "main.css": "/static/css/main.85ccece2.chunk.css",
-    "main.js": "/static/js/main.285e7d5f.chunk.js",
-    "main.js.map": "/static/js/main.285e7d5f.chunk.js.map",
+    "main.css": "/static/css/main.ece89b53.chunk.css",
+    "main.js": "/static/js/main.cece064c.chunk.js",
+    "main.js.map": "/static/js/main.cece064c.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.09b85ec0.js",
     "runtime-main.js.map": "/static/js/runtime-main.09b85ec0.js.map",
-    "static/js/2.2da02928.chunk.js": "/static/js/2.2da02928.chunk.js",
-    "static/js/2.2da02928.chunk.js.map": "/static/js/2.2da02928.chunk.js.map",
+    "static/js/2.b25ffe98.chunk.js": "/static/js/2.b25ffe98.chunk.js",
+    "static/js/2.b25ffe98.chunk.js.map": "/static/js/2.b25ffe98.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.948e99959736078e9659826a70eab2c5.js": "/precache-manifest.948e99959736078e9659826a70eab2c5.js",
+    "precache-manifest.fd8f1a67cee3d0965040eadabd9a2a67.js": "/precache-manifest.fd8f1a67cee3d0965040eadabd9a2a67.js",
     "service-worker.js": "/service-worker.js",
-    "static/css/main.85ccece2.chunk.css.map": "/static/css/main.85ccece2.chunk.css.map",
-    "static/js/2.2da02928.chunk.js.LICENSE.txt": "/static/js/2.2da02928.chunk.js.LICENSE.txt",
-    "static/media/1start.png": "/static/media/1start.485f9c5e.png",
-    "static/media/2start.png": "/static/media/2start.4bd7255a.png",
-    "static/media/3start.png": "/static/media/3start.8f05a630.png",
-    "static/media/4start.png": "/static/media/4start.1ae305b0.png",
-    "static/media/5start.png": "/static/media/5start.b065a474.png",
-    "static/media/loading.gif": "/static/media/loading.7fc09f7a.gif",
-    "static/media/logo_az.png": "/static/media/logo_az.a1cf0c4d.png",
-    "static/media/logo_full.png": "/static/media/logo_full.623d5050.png",
-    "static/media/scan_qr3.png": "/static/media/scan_qr3.e86aac39.png",
-    "static/media/thankyouGirl.gif": "/static/media/thankyouGirl.0ddd0068.gif",
-    "static/media/touch_tablet.png": "/static/media/touch_tablet.75a00a33.png"
+    "static/css/main.ece89b53.chunk.css.map": "/static/css/main.ece89b53.chunk.css.map",
+    "static/js/2.b25ffe98.chunk.js.LICENSE.txt": "/static/js/2.b25ffe98.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.09b85ec0.js",
-    "static/js/2.2da02928.chunk.js",
-    "static/css/main.85ccece2.chunk.css",
-    "static/js/main.285e7d5f.chunk.js"
+    "static/js/2.b25ffe98.chunk.js",
+    "static/css/main.ece89b53.chunk.css",
+    "static/js/main.cece064c.chunk.js"
   ]
 }

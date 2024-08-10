@@ -33,6 +33,3 @@ button{
   outline: none;
   cursor: pointer;
 }
-
-/* ----------------- Not Fount ------------------- */
- @import url("./components/body/notfound/notFound.css");

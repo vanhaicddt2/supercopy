@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import * as useApi from '../../../api/user';
+import * as useApi from './api/user';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 // import './App.css';
 

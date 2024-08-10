@@ -1,12 +1,8 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import SurveyOnline from './components/body/survey/SurveyOnline';
-import MakeIDByList from './components/body/future/MakeIDByList';
-import Home from './components/body/home/Home';
-import NotFound from './components/body/notfound/NotFound';
-import ThankPage from './components/body/future/ThankPage';
-import TransferToMainWeb from './components/body/future/TransferToMainWeb';
-import RotenSurvey from './components/body/roten/RotenSurvey';
+// import NotFound from './components/body/notfound/NotFound';
+import TransferToMainWeb from './TransferToMainWeb';
+
 
 function NewRouter() {
 
@@ -23,9 +19,9 @@ function NewRouter() {
                 <Route path="/survey/complete/:language" component={ThankPage} exact/>
                 <Route path="/roten/make_new/:idRoten"  component={RotenSurvey} exact/>
                 <Route path="/make_id/:idBranch" component={MakeIDByList} exact/> */}
-                <Route path="/survey/complete/:language" component={ThankPage} exact/>
+                {/* <Route path="/survey/complete/:language" component={ThankPage} exact/> */}
                 <Route path="/"  component={TransferToMainWeb} exact/>
-                <Route path="/*"  component={NotFound} exact/>
+                {/* <Route path="/*"  component={NotFound} exact/> */}
             </Switch>
         </section>
     );
