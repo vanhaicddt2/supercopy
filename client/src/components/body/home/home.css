@@ -1,0 +1,135 @@
+.home-survey-title {
+    display:flex;
+    justify-content:center;
+    text-align: center; 
+    align-items : center; 
+    margin: auto;
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+.home-survey-title_img {
+    width: 120px;
+}
+
+.home-survey-title_text {
+    color: #482979;
+    text-align: center;
+    font-size: 1.5rem 
+}
+
+.home-survey-content {
+
+}
+
+.home-survey-content_title {
+    align-items: center;
+    height: 80px; 
+    background: #48297945 ;
+    display: flex;
+    justify-content: center;
+    padding: 0px 12px;
+}
+
+.home-survey-content_title_text {
+    font-size:  1.2rem;
+    font-weight: 600 
+}
+
+.home-survey-content_title_img {
+   width: 55px;
+}
+
+.home-survey-content_input-content {
+    text-align:center; 
+    margin: auto ; 
+    padding: 24px;
+    margin-top: 12px;
+    width:70%;
+    border-radius:20px;
+    box-shadow: 10px 5px 5px #482979;
+    border: 0.8px solid black;
+    margin-bottom: 12px;
+}
+
+.home-survey-content_qr-content {
+    margin: 12px auto 12px auto;
+    max-width: 100px;
+    width: 100%
+}
+
+@media only screen and (min-width: 600px) {
+    /* For tablets: */
+    .home-survey-title_img {
+        width: 130px;
+    }
+
+    .home-survey-title_text {
+        font-size: 2rem;
+    }
+
+    .home-survey-content {
+        /* flex: 2;
+        padding:12px 0px;
+        display:flex;
+        justify-content: center */
+    }
+
+    .home-survey-content_title {
+        height: 120px; 
+        /* background: #48297945 ; 
+        background: aqua;*/
+        display: flex;
+        justify-content :center
+    }
+
+    .home-survey-content_title_text {
+        font-size:  1.5rem;
+        font-weight: 600;
+        text-align: center;
+    }
+
+    .home-survey-content_title_img {
+        width: 80px;
+    }
+
+    .home-survey-content_input-content {
+        border-right:2px solid; 
+        padding: 24px;
+        margin-top: 12px;
+        /* margin-bottom: 12px; */
+    }
+
+    .home-survey-content_qr-content {
+        /* max-width: 180px; */
+        max-width: 38%;
+    }
+    
+}
+    /* For desktop: */
+@media only screen and (min-width: 768px) {
+
+    .home-survey-title_img {
+        width: 160px;
+    }
+
+    .home-survey-content_title {
+        height: 120px; 
+        /* background: yellow ; 
+        display: flex;
+        justify-content :center */
+    }
+
+    .home-survey-title_text {
+        color: #482979;
+        text-align: center;
+        font-size: 3rem 
+    }
+
+    .home-survey-content {
+        flex: 2;
+        padding:12px 0px;
+        display:flex;
+        justify-content:center
+    }
+}

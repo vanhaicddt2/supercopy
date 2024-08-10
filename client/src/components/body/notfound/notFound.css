@@ -1,0 +1,28 @@
+.not_found {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    background-color:powderblue;
+    height: 100vh
+}
+
+.not_found-content {
+    margin: auto ;
+    margin: auto;
+    background-color:white;
+    width: 80%;
+    border-radius: 25px;
+    box-shadow: 0 0 10px black;
+}
+
+.not_found-content_title1 {
+    font-size: 5rem;
+    font-weight: 700; 
+    color: red 
+}
+
+.not_found-content_title2 {
+    font-size: 2.5rem ;
+    font-weight: 700;
+}

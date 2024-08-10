@@ -1,0 +1,57 @@
+* {
+    font-family: -apple-system, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro",Osaka, "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif, 'Segoe UI', 'Roboto', 'Oxygen', BlinkMacSystemFont, 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue' ;
+}
+
+.op-hidden {
+    display: none !important;
+}
+
+.make-room_label-room {
+    width: '70px';
+    text-align:'left';
+    background:'aqua'
+}
+
+@media print 
+{
+    @page {
+      size: A4; /* DIN A4 standard, Europe */
+      margin: 16px;
+    }
+    html, body {
+        /* width: 210mm; */
+        /* height: 297mm; */
+        /* height: 282mm; */
+        /* font-size: 11px;
+        background: #FFF;
+        overflow: visible; */
+    }
+    body {
+        /* padding-top: 15mm; */
+        margin: 0;
+        padding: 0;
+    }
+
+    .rotate {
+        /* -ms-transform:rotate(90deg);
+        -o-transform:rotate(90deg);
+        transform:rotate(90deg); */
+    }
+
+    .testA5 {
+        /* width: 600px;
+        height: 1500px; */
+    }
+
+    .w100 {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 100% !important;
+    }
+
+    .no-print, .no-print *
+    {
+        display: none !important;
+    }
+    
+}
