@@ -2,6 +2,8 @@ import React from 'react';
 import {BrowserRouter as Router} from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
 import NewRouter from './NewRouter';
+import { ToastContainer, } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const dispatch = useDispatch()
@@ -35,6 +37,17 @@ function App() {
   return (
     <Router>
       <div className="App">
+      <ToastContainer
+          position="top-center"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
         {/* <Header />
         <Body /> */}
         <NewRouter />
