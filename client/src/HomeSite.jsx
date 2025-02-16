@@ -93,9 +93,9 @@ const handleUpload = async () => {
 
     function renderOneCopyText(text, copy) {
         return (<div class="form-group d-flex" style={{ position:'relative'}}>
-                    <label for="exampleInputEmail1" className='text-label-copy'>{text}</label>
-                    <input value={data[copy]} type="text" name={copy}  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="copy 1"
-                            onChange={e => changeContent(e.target.name, e.target.value)} />
+                    <label for={copy} className='text-label-copy'>{text}</label>
+                    <textarea value={data[copy]} type="text" name={copy}  className="form-control" id={copy} aria-describedby="emailHelp" placeholder={copy}
+                            onChange={e => changeContent(e.target.name, e.target.value)} ></textarea>
                     <CopyToClipboard text={data[copy]} onCopy={()=>informationToast("Success "+ copy)}>
                         <svg xmlns="http://www.w3.org/2000/svg" 
                             style={{position:'absolute', top:'8px', right: '0'}}
