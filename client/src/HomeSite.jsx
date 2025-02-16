@@ -15,7 +15,7 @@ function HomeSite() {
     copy3: "",
     copy4: "",
     copy5: "",
-    tabSelect: "picture"
+    tabSelect: "text"
   })
 
   const [msg, setMsg] = useState("picture");
