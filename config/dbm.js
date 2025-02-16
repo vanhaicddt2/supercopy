@@ -11,7 +11,7 @@ const confirmMongoose = {
     // useCreateIndex: true,
     // useFindAndModify: false,
     useNewUrlParser: true,
-    useUnifiedTopology: true,
+    useUnifiedTopology: true
 };
 
 mongoose.set("strictQuery", false);

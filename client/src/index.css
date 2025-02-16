@@ -33,3 +33,67 @@ button{
   outline: none;
   cursor: pointer;
 }
+
+.title-infor {
+  font-size: 2rem;
+  width: 100%;
+  color: green
+
+}
+.sub-infor {
+  font-size: 0.6rem;
+  width: 100%;
+}
+
+.select-tab {
+  width: 100%;
+  display: flex;
+  cursor: pointer;
+}
+
+.select-tab_item {
+  width: 50%;
+  border: 1px solid black;
+  padding: 2px
+}
+
+.select-tab_item.active {
+  background-color: yellow;
+}
+.text-label-copy {
+  width: 60px;
+}
+
+/* .admin-home_page-picture-content-item {
+  width: 400px;
+} */
+
+.admin-home_page-picture-function {
+  width: 40%;
+}
+
+.admin-home_page-picture-content-button-up {
+  margin-right: 1500px;
+}
+
+/* Responsive */
+/* Tablet và PC: Hiển thị theo dạng lưới với 3 cột */
+@media (min-width: 769px) {
+  .admin-home_page-picture-content-item {
+    width: 100%;
+  }
+}
+
+/* Tablet: Chuyển sang 2 cột */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .admin-home_page-picture-content-item {
+    width: 800px;
+  }
+}
+
+/* Phone: Chuyển sang cột dọc */
+@media (max-width: 768px) {
+  .admin-home_page-picture-content-item {
+    width: 400px;
+  }
+}

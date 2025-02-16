@@ -5,6 +5,10 @@ const userSchema = new mongoose.Schema({
     name: {type: String },
     copy1: {type: String },
     copy2: {type: String },
+    copy3: {type: String },
+    copy4: {type: String },
+    copy5: {type: String },
+    picture1: {type: String},
 }, {
     timestamps: true
 });

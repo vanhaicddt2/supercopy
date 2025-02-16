@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 // import NotFound from './components/body/notfound/NotFound';
-import TransferToMainWeb from './TransferToMainWeb';
+import TransferToMainWeb from './HomeSite';
 
 
 function NewRouter() {

@@ -7,14 +7,20 @@ const userCtrl = {
         try {
             const { name } = req.params;
             const dataOnBody = req.body;
+            let existingUser;
 
-            console.log("dataOnBody", dataOnBody);
+            if ("picture1" in dataOnBody) {
+                existingUser = await User.findOneAndUpdate({ name },{ picture1 : dataOnBody.picture1 });
+            } else {
+                existingUser = await User.findOneAndUpdate({ name },{
+                    copy1: dataOnBody.copy1,
+                    copy2: dataOnBody.copy2,
+                    copy3: dataOnBody.copy3,
+                    copy4: dataOnBody.copy4,
+                    copy5: dataOnBody.copy5,
+                });
+            }         
             
-            const existingUser = await User.findOneAndUpdate({ name },{
-                copy1: dataOnBody.copy1,
-                copy2: dataOnBody.copy2,
-            });
-
             if (!existingUser) {
                 return res.json({ status: 2, message: 'Username already exists' });
             }
@@ -29,7 +35,7 @@ const userCtrl = {
         try {
             const { name } = req.params;
 
-            const existingUser = await User.findOne({ name },{ copy1: 1, copy2: 1 });
+            const existingUser = await User.findOne({ name },);
 
             if (!existingUser) {
                 return res.json({ status: 2, message: 'Username already exists' });
