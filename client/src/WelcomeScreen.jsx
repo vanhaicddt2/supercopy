@@ -16,7 +16,7 @@ export default function WelcomeScreen() {
   return (
     <div className="welcome-site">
       <h1 className="welcome-site_title">Welcome Super Copy</h1>
-      <div style={{fontSize:'0.8rem'}}>* Copyright by Hai and domain money has been shared by TungLam</div>
+      <div style={{fontSize:'0.8rem', textAlign: 'center'}}>* Copyright by Hai and domain money has been shared by TungLam</div>
       <div className="mt-4">
         <div style={{ display:'flex' ,flexDirection: 'column-reverse' }}>
           <img src={lam_hello_sticker} alt="lam_hello_sticker" className="welcome-site_img" style={{width:"100%"}}/>
