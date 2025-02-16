@@ -64,11 +64,85 @@ button{
   width: 60px;
 }
 
+.chat-box {
+  display: inline-block;
+  background-color: #f1f1f1;
+  border-radius: 15px;
+  padding: 10px 20px;
+  max-width: 150px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.chat-box::before {
+  content: '';
+  position: absolute;
+  left: 15px;
+  bottom: -10px;
+  width: 20px;
+  height: 20px;
+  background-color: #f1f1f1;
+  transform: rotate(45deg);
+}
+
+.chat-text {
+  margin: 0;
+  font-size: 20px;
+  color: #333;
+}
+  
 /* .admin-home_page-picture-content-item {
   width: 400px;
 } */
 
+.welcome-site {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 24px;
+  /* justify-content: center; */
+  min-height: 100vh;
+  font-size: 1.2rem;
+  background: url("https://source.unsplash.com/1600x900/?happy") no-repeat center center;
+  background-size: cover;
+}
 
+.welcome-site_img {
+  width: 100%;
+  max-width: 100px;
+  height: auto;
+  margin-bottom: 2rem;
+}
+
+.welcome-site_title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(219, 39, 180, 0.8);
+}
+
+.welcome-site_input {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  width: 350px;
+  outline: none;
+}
+
+.welcome-site_button {
+  background-color: #3b82f6;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.welcome-site_button:hover {
+  background-color: #2563eb;
+}
 .form-control {
   min-height: 50px;
   height: 50px;
@@ -88,12 +162,20 @@ button{
   .admin-home_page-picture-content-item {
     width: 100%;
   }
+
+  .welcome-site_img {
+    max-width: 180px;
+  }
 }
 
 /* Tablet: Chuyển sang 2 cột */
 @media (max-width: 1024px) and (min-width: 769px) {
   .admin-home_page-picture-content-item {
     width: 800px;
+  }
+
+  .welcome-site_img {
+    max-width: 120px;
   }
 }
 

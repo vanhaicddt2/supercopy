@@ -1,7 +1,8 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 // import NotFound from './components/body/notfound/NotFound';
-import TransferToMainWeb from './HomeSite';
+import HomeShowContent from './HomeShowContent';
+import WelcomeScreen from './WelcomeScreen';
 
 
 function NewRouter() {
@@ -20,8 +21,8 @@ function NewRouter() {
                 <Route path="/roten/make_new/:idRoten"  component={RotenSurvey} exact/>
                 <Route path="/make_id/:idBranch" component={MakeIDByList} exact/> */}
                 {/* <Route path="/survey/complete/:language" component={ThankPage} exact/> */}
-                <Route path="/:name"  component={TransferToMainWeb} exact/>
-                {/* <Route path="/*"  component={NotFound} exact/> */}
+                <Route path="/:name"  component={HomeShowContent} exact/>
+                <Route path="/*"  component={WelcomeScreen} exact/>
             </Switch>
         </section>
     );

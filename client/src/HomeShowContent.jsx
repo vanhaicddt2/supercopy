@@ -7,7 +7,7 @@ import axios from "axios";
 
 import './index.css';
 
-function HomeSite() {
+function HomeShowContent() {
   const { name } = useParams();
   const [data, setData] = useState({
     copy1: "",
@@ -149,4 +149,4 @@ const handleUpload = async () => {
   );
 }
 
-export default HomeSite;
+export default HomeShowContent;
