@@ -15,6 +15,8 @@ function HomeShowContent() {
     copy3: "",
     copy4: "",
     copy5: "",
+    copy6: "",
+    copy7: "",
     tabSelect: "text"
   })
 
@@ -36,6 +38,9 @@ function HomeShowContent() {
               copy3: result.data.data.copy3 ? result.data.data.copy3 : "",
               copy4: result.data.data.copy4 ? result.data.data.copy4 : "",
               copy5: result.data.data.copy5 ? result.data.data.copy5 : "",
+              copy5: result.data.data.copy6 ? result.data.data.copy6 : "",
+              copy5: result.data.data.copy7 ? result.data.data.copy7 : "",
+
             //  tabSelect: result.data.data.tabSelect,
             })
             setImageUrl(result.data.data.picture1 ? result.data.data.picture1 :"/image/"+name+".png?v="+dateToNumber)
@@ -111,6 +116,8 @@ const handleUpload = async () => {
             {renderOneCopyText("Text 3", "copy3")}
             {renderOneCopyText("Text 4", "copy4")}
             {renderOneCopyText("Text 5", "copy5")}
+            {renderOneCopyText("Text 6", "copy6")}
+            {renderOneCopyText("Text 7", "copy7")}
 
             <button className='btn btn-success mt-3' onClick={()=> window.location.reload() }>Reload</button>
            <button className='btn btn-primary mt-3 ml-3' onClick={()=>updateToServer(data)}>Change Content</button>

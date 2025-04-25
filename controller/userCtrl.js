@@ -18,6 +18,8 @@ const userCtrl = {
                     copy3: dataOnBody.copy3,
                     copy4: dataOnBody.copy4,
                     copy5: dataOnBody.copy5,
+                    copy6: dataOnBody.copy6,
+                    copy7: dataOnBody.copy7,
                 });
             }         
             

@@ -8,6 +8,8 @@ const userSchema = new mongoose.Schema({
     copy3: {type: String },
     copy4: {type: String },
     copy5: {type: String },
+    copy6: {type: String },
+    copy7: {type: String },
     picture1: {type: String},
 }, {
     timestamps: true
