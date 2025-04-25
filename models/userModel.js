@@ -3,13 +3,13 @@ var conn = require('../config/dbm');
 
 const userSchema = new mongoose.Schema({
     name: {type: String },
-    copy1: {type: String },
-    copy2: {type: String },
-    copy3: {type: String },
-    copy4: {type: String },
-    copy5: {type: String },
-    copy6: {type: String },
-    copy7: {type: String },
+    copy1: {type: String, default:"" },
+    copy2: {type: String, default:"" },
+    copy3: {type: String, default:"" },
+    copy4: {type: String, default:"" },
+    copy5: {type: String, default:"" },
+    copy6: {type: String, default:""  },
+    copy7: {type: String,default:""  },
     picture1: {type: String},
 }, {
     timestamps: true
