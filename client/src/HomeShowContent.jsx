@@ -38,8 +38,8 @@ function HomeShowContent() {
               copy3: result.data.data.copy3 ? result.data.data.copy3 : "",
               copy4: result.data.data.copy4 ? result.data.data.copy4 : "",
               copy5: result.data.data.copy5 ? result.data.data.copy5 : "",
-              copy5: result.data.data.copy6 ? result.data.data.copy6 : "",
-              copy5: result.data.data.copy7 ? result.data.data.copy7 : "",
+              copy6: result.data.data.copy6 ? result.data.data.copy6 : "",
+              copy7: result.data.data.copy7 ? result.data.data.copy7 : "",
 
             //  tabSelect: result.data.data.tabSelect,
             })
