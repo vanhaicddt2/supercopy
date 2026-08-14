@@ -6,9 +6,10 @@ module.exports = exports = mongoose;
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const path = require('path');
-// var cron = require('node-cron');
-const app = express();
 const http = require('http');
+const { Server } = require('socket.io');
+const app = express();
+const server = http.createServer(app);
 const route = require('./router/index')
 var bodyParser = require('body-parser');
 const multer = require("multer");
@@ -27,6 +28,63 @@ const fs = require("fs");
 app.use(express.json());
 app.use(cors());
 app.use(cookieParser());
+
+// Setup Socket.io
+const allowedOrigins = (process.env.ALLOWED_ORIGINS || 'http://localhost:3000,http://localhost:3001,http://localhost:5000,http://localhost:6000').split(',').map((origin) => origin.trim()).filter(Boolean);
+
+const io = new Server(server, {
+  cors: {
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+        return;
+      }
+
+      callback(new Error('Không được phép truy cập bởi Socket.IO: ' + origin));
+    },
+    methods: ['GET', 'POST'],
+    credentials: true,
+  },
+});
+
+app.set('io', io);
+global.io = io;
+
+// Emit realtime updates to user
+global.emitRealtimeUpdate = (eventName, data) => {
+  if (!global.io) return;
+  global.io.emit(eventName, {
+    ...data,
+    timestamp: new Date().toISOString(),
+  });
+};
+
+// Emit update to specific user/room
+global.emitToUser = (userId, eventName, data) => {
+  if (!global.io) return;
+  global.io.to(`user:${userId}`).emit(eventName, {
+    ...data,
+    timestamp: new Date().toISOString(),
+  });
+};
+
+// Socket connection handlers
+io.on('connection', (socket) => {
+  console.log('✅ User connected:', socket.id);
+
+  socket.on('join_user', (userId) => {
+    socket.join(`user:${userId}`);
+    console.log(`📍 User ${userId} joined room`);
+  });
+
+  socket.on('disconnect', () => {
+    console.log('❌ User disconnected:', socket.id);
+  });
+
+  socket.on('error', (error) => {
+    console.error('Socket error:', error);
+  });
+});
 
 // app.use('/image', express.static(path.join(__dirname, 'image')));
 
@@ -73,7 +131,7 @@ app.get('*', function (req, res) {
 });
 
 // note 
-const PORT = process.env.PORT || 6000;
-app.listen(PORT, () => {
-    console.log('Server running on port ', PORT);
+const PORT = process.env.PORT || 5000;
+server.listen(PORT, () => {
+    console.log('🚀 Server running on port ', PORT);
 });

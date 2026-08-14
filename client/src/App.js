@@ -1,6 +1,7 @@
 import React from 'react';
 import {BrowserRouter as Router} from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
+import { SocketProvider } from './context/SocketContext';
 import NewRouter from './NewRouter';
 import { ToastContainer, } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -35,24 +36,26 @@ function App() {
   // },[token, dispatch])
 
   return (
-    <Router>
-      <div className="App">
-      <ToastContainer
-          position="top-center"
-          autoClose={3000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-        />
-        {/* <Header />
-        <Body /> */}
-        <NewRouter />
-      </div>
-    </Router>
+    <SocketProvider>
+      <Router>
+        <div className="App">
+        <ToastContainer
+            position="top-center"
+            autoClose={3000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          />
+          {/* <Header />
+          <Body /> */}
+          <NewRouter />
+        </div>
+      </Router>
+    </SocketProvider>
   );
 }
 

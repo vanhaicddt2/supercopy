@@ -4,11 +4,13 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import { informationToast } from './units/other/toast.js'
 import axios from "axios";
+import { useSocket } from './context/SocketContext';
 
 import './index.css';
 
 function HomeShowContent() {
   const { name } = useParams();
+  const { socket, isConnected } = useSocket();
   const [data, setData] = useState({
     copy1: "",
     copy2: "",
@@ -52,6 +54,34 @@ function HomeShowContent() {
 
       takeData();
   },[])
+
+  // Socket.io Real-time Listener
+  useEffect(() => {
+    if (!socket || !isConnected) return;
+
+    socket.on('content:updated', (payload) => {
+      console.log('📡 Real-time Content Update:', payload);
+      informationToast('✅ Content updated from server!');
+      
+      // Cập nhật data nếu đó là update cho page này
+      if (payload.name === name && payload.data) {
+        setData(prevData => ({
+          ...prevData,
+          copy1: payload.data.copy1 || prevData.copy1,
+          copy2: payload.data.copy2 || prevData.copy2,
+          copy3: payload.data.copy3 || prevData.copy3,
+          copy4: payload.data.copy4 || prevData.copy4,
+          copy5: payload.data.copy5 || prevData.copy5,
+          copy6: payload.data.copy6 || prevData.copy6,
+          copy7: payload.data.copy7 || prevData.copy7,
+        }));
+      }
+    });
+
+    return () => {
+      socket.off('content:updated');
+    };
+  }, [socket, isConnected, name]);
 
   function changeContent(target, value) {
      const newData = { ... data }
@@ -118,6 +148,19 @@ const handleUpload = async () => {
             {renderOneCopyText("Text 5", "copy5")}
             {renderOneCopyText("Text 6", "copy6")}
             {renderOneCopyText("Text 7", "copy7")}
+
+            {/* Real-time Connection Status */}
+            <div style={{
+              padding: '8px 12px',
+              marginTop: '12px',
+              borderRadius: '5px',
+              backgroundColor: isConnected ? '#d4edda' : '#f8d7da',
+              color: isConnected ? '#155724' : '#721c24',
+              fontSize: '12px',
+              fontWeight: '500'
+            }}>
+              {isConnected ? '✅ Real-time Connected' : '⚠️ Not Connected'}
+            </div>
 
             <button className='btn btn-success mt-3' onClick={()=> window.location.reload() }>Reload</button>
            <button className='btn btn-primary mt-3 ml-3' onClick={()=>updateToServer(data)}>Change Content</button>

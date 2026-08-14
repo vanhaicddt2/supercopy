@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "SuperCopy",
+  "name": "SuperCopy - Save Your Logs",
+  "description": "A powerful tool to save, manage, and share your logs with rich formatting and PDF export.",
   "icons": [
     {
       "src": "favicon.ico",
@@ -10,16 +11,33 @@
     {
       "src": "logo192.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "192x192",
+      "purpose": "any"
     },
     {
       "src": "logo512.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "512x512",
+      "purpose": "any maskable"
     }
   ],
   "start_url": ".",
+  "scope": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#007bff",
+  "background_color": "#ffffff",
+  "orientation": "portrait-primary",
+  "categories": ["productivity", "utilities"],
+  "shortcuts": [
+    {
+      "name": "Create New Log",
+      "url": "/create",
+      "description": "Create a new log entry"
+    },
+    {
+      "name": "View Logs",
+      "url": "/logs",
+      "description": "View all your saved logs"
+    }
+  ]
 }

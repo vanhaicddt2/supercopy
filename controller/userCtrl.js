@@ -27,6 +27,18 @@ const userCtrl = {
                 return res.json({ status: 2, message: 'Username already exists' });
             }
             
+            // 🔄 Emit real-time update to all connected clients
+            if (global.io) {
+                global.io.emit('content:updated', {
+                    name: name,
+                    type: 'content_saved',
+                    message: `Content updated for ${name}`,
+                    data: dataOnBody,
+                    timestamp: new Date().toISOString(),
+                });
+                console.log('📡 [Socket.io] Emitted content:updated for:', name);
+            }
+            
             res.json({ status: 1, message: 'User saved successfully' });
         } catch (error) {
             console.error(error);
