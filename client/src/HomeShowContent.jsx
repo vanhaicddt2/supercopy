@@ -8,6 +8,16 @@ import { useSocket } from './context/SocketContext';
 
 import './index.css';
 
+const COPY_FIELDS = [
+  { key: 'copy1', label: 'Copy 1' },
+  { key: 'copy2', label: 'Copy 2' },
+  { key: 'copy3', label: 'Copy 3' },
+  { key: 'copy4', label: 'Copy 4' },
+  { key: 'copy5', label: 'Copy 5' },
+  { key: 'copy6', label: 'Copy 6' },
+  { key: 'copy7', label: 'Copy 7' },
+];
+
 function HomeShowContent() {
   const { name } = useParams();
   const { socket, isConnected } = useSocket();
@@ -22,14 +32,17 @@ function HomeShowContent() {
     tabSelect: "text"
   })
 
-  const [msg, setMsg] = useState("picture");
   const [file, setFile] = useState(null);
   const [imageUrl, setImageUrl] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
+  const [isSaving, setIsSaving] = useState(false);
+  const [isUploading, setIsUploading] = useState(false);
 
   const dateToNumber = Date.now();
 
   useEffect(() => {
       const takeData = async () => {
+         setIsLoading(true);
          const result = await useApi.getData(name,"token");
 
          if(result){
@@ -49,6 +62,7 @@ function HomeShowContent() {
             informationToast("Successfully load data!!")
           } else {
          }
+         setIsLoading(false);
         //  console.log("result", result);
       }
 
@@ -62,7 +76,7 @@ function HomeShowContent() {
     socket.on('content:updated', (payload) => {
       console.log('📡 Real-time Content Update:', payload);
       informationToast('✅ Content updated from server!');
-      
+
       // Cập nhật data nếu đó là update cho page này
       if (payload.name === name && payload.data) {
         setData(prevData => ({
@@ -91,8 +105,13 @@ function HomeShowContent() {
 
   function updateToServer(data) {
     const updateServer = async () => {
-      const result = await useApi.saveData(name, data, "token");
-   }
+      setIsSaving(true);
+      try {
+        await useApi.saveData(name, data, "token");
+      } finally {
+        setIsSaving(false);
+      }
+    }
 
    updateServer();
   }
@@ -111,15 +130,18 @@ const handleUpload = async () => {
     formData.append("image", file);
 
     try {
+      setIsUploading(true);
       const response = await axios.post("/upload/"+name, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
       updateToServer({ picture1: response.data.imageUrl })
       setImageUrl(response.data.imageUrl + "?v=" + dateToNumber);
-      
+
     } catch (error) {
       console.error("Upload failed:", error);
+    } finally {
+      setIsUploading(false);
     }
   };
 
@@ -127,74 +149,103 @@ const handleUpload = async () => {
   function renderTextContent() {
 
     function renderOneCopyText(text, copy) {
-        return (<div class="form-group d-flex" style={{ position:'relative'}}>
-                    <label for={copy} className='text-label-copy'>{text}</label>
-                    <textarea value={data[copy]} type="text" name={copy}  className="form-control" id={copy} aria-describedby="emailHelp" placeholder={copy}
-                            onChange={e => changeContent(e.target.name, e.target.value)} ></textarea>
-                    <CopyToClipboard text={data[copy]} onCopy={()=>informationToast("Success "+ copy)}>
-                        <svg xmlns="http://www.w3.org/2000/svg" 
-                            style={{position:'absolute', top:'8px', right: '0'}}
-                            width="24" height="24" fill="none" viewBox="0 0 24 24" class="icon-sm"><path fill="currentColor" fill-rule="evenodd" d="M7 5a3 3 0 0 1 3-3h9a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3h-2v2a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3v-9a3 3 0 0 1 3-3h2zm2 2h5a3 3 0 0 1 3 3v5h2a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1h-9a1 1 0 0 0-1 1zM5 9a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-9a1 1 0 0 0-1-1z" clip-rule="evenodd"></path></svg>
-                        {/* <button>Sao chép</button> */}
-                    </CopyToClipboard>
-                </div>)
+        return (
+          <div className="form-group" key={copy}>
+            <label htmlFor={copy} className='text-label-copy'>{text}</label>
+            <textarea
+              value={data[copy]}
+              name={copy}
+              className="form-control"
+              id={copy}
+              aria-describedby="emailHelp"
+              placeholder={text}
+              onChange={e => changeContent(e.target.name, e.target.value)}
+            ></textarea>
+            <CopyToClipboard text={data[copy]} onCopy={() => informationToast("Success " + copy)}>
+              <button type="button" className="copy-icon-btn" aria-label={"Copy " + text}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" className="icon-sm">
+                  <path fill="currentColor" fillRule="evenodd" clipRule="evenodd" d="M7 5a3 3 0 0 1 3-3h9a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3h-2v2a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3v-9a3 3 0 0 1 3-3h2zm2 2h5a3 3 0 0 1 3 3v5h2a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1h-9a1 1 0 0 0-1 1zM5 9a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-9a1 1 0 0 0-1-1z"></path>
+                </svg>
+              </button>
+            </CopyToClipboard>
+          </div>
+        )
     }
     return (
         <>
-            {renderOneCopyText("Text 1", "copy1")}
-            {renderOneCopyText("Text 2", "copy2")}
-            {renderOneCopyText("Text 3", "copy3")}
-            {renderOneCopyText("Text 4", "copy4")}
-            {renderOneCopyText("Text 5", "copy5")}
-            {renderOneCopyText("Text 6", "copy6")}
-            {renderOneCopyText("Text 7", "copy7")}
-
-            {/* Real-time Connection Status */}
-            <div style={{
-              padding: '8px 12px',
-              marginTop: '12px',
-              borderRadius: '5px',
-              backgroundColor: isConnected ? '#d4edda' : '#f8d7da',
-              color: isConnected ? '#155724' : '#721c24',
-              fontSize: '12px',
-              fontWeight: '500'
-            }}>
-              {isConnected ? '✅ Real-time Connected' : '⚠️ Not Connected'}
+            <div className="copy-list">
+              {COPY_FIELDS.map(f => renderOneCopyText(f.label, f.key))}
             </div>
 
-            <button className='btn btn-success mt-3' onClick={()=> window.location.reload() }>Reload</button>
-           <button className='btn btn-primary mt-3 ml-3' onClick={()=>updateToServer(data)}>Change Content</button>
+            <div className="action-bar">
+              <button className='btn btn-success' onClick={() => window.location.reload()}>Reload</button>
+              <button className='btn btn-primary' onClick={() => updateToServer(data)} disabled={isSaving}>
+                {isSaving ? 'Saving…' : 'Change Content'}
+              </button>
+            </div>
         </>
     )
   }
 
+  function renderPictureContent() {
+    return (
+      <div className="picture-panel">
+        <div className="picture-preview-wrap">
+          <img className='admin-home_page-picture-content-item' src={imageUrl} alt="Uploaded" width="200" />
+        </div>
+        <div className="picture-upload-row">
+          <input type="file" accept="image/*" onChange={handleFileChange} />
+          <button onClick={handleUpload} className='btn btn-primary p-2' disabled={isUploading}>
+            {isUploading ? 'Uploading…' : 'Upload'}
+          </button>
+        </div>
+      </div>
+    )
+  }
+
   return (
-    <div className="App p-3 pt-0" style={{ textAlign:'center', alignItems:'center', margin: 'auto', marginTop: "0"}}>
-        <div className='infor mb-1 mt-1'>
-            <div className="title-infor" style={{width:'100%'}}>Super Copy</div>
-            <div className="sub-infor">* Copyright by Hai and domain money has been shared by TungLam</div>
-        </div>
-
-        <div className='select-tab mb-3'>
-            <div className={'select-tab_item ' + (data.tabSelect ==="text" ? "active": "")}
-            onClick={() => changeContent("tabSelect", "text")}>TEXT</div>
-            <div className={'select-tab_item ' + (data.tabSelect ==="picture" ? "active": "")}
-            onClick={() => changeContent("tabSelect", "picture")}>PICTURE</div>
-        </div>
-
-        {
-            data.tabSelect === "text"? renderTextContent() : "" //renderPictureContent()
-        }
-
-        {(imageUrl && data.tabSelect === "picture") && (
+    <div className="App p-3 pt-0">
+        <div className='infor'>
             <div>
-                <img className='admin-home_page-picture-content-item' src={imageUrl} alt="Uploaded" width="200" />
-                <input type="file" onChange={handleFileChange} />
-                <button onClick={handleUpload} className='btn btn-primary p-2'>Upload</button>
+              <div className="title-infor">Super Copy</div>
+              <div className="sub-infor">* Copyright by Hai and domain money has been shared by TungLam</div>
             </div>
+            <span
+              className={'status-badge ' + (isConnected ? 'online' : 'offline')}
+              title={isConnected ? 'Real-time connected' : 'Not connected'}
+            >
+              <span className="dot"></span>
+              <span className="status-badge_text">{isConnected ? 'Real-time connected' : 'Not connected'}</span>
+            </span>
+        </div>
+
+        <div className='select-tab' role="tablist">
+            <div
+              role="tab"
+              tabIndex={0}
+              aria-selected={data.tabSelect === "text"}
+              className={'select-tab_item ' + (data.tabSelect === "text" ? "active" : "")}
+              onClick={() => changeContent("tabSelect", "text")}
+              onKeyDown={(e) => e.key === 'Enter' && changeContent("tabSelect", "text")}
+            >TEXT</div>
+            <div
+              role="tab"
+              tabIndex={0}
+              aria-selected={data.tabSelect === "picture"}
+              className={'select-tab_item ' + (data.tabSelect === "picture" ? "active" : "")}
+              onClick={() => changeContent("tabSelect", "picture")}
+              onKeyDown={(e) => e.key === 'Enter' && changeContent("tabSelect", "picture")}
+            >PICTURE</div>
+        </div>
+
+        {isLoading ? (
+          <div className="sub-infor" style={{ marginTop: '20px' }}>Loading…</div>
+        ) : (
+          <>
+            {data.tabSelect === "text" && renderTextContent()}
+            {(imageUrl && data.tabSelect === "picture") && renderPictureContent()}
+          </>
         )}
-
-
     </div>
   );
 }
