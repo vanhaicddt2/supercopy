@@ -86,7 +86,7 @@ textarea:focus-visible,
   align-items: baseline;
   justify-content: space-between;
   gap: 12px;
-  padding: 28px 4px 18px;
+  padding: 20px 4px 14px;
   border-bottom: 1px solid var(--line);
   text-align: left;
 }
@@ -152,13 +152,13 @@ textarea:focus-visible,
   background: var(--line);
   padding: 4px;
   border-radius: var(--radius-md);
-  margin-top: 20px;
+  margin-top: 14px;
 }
 
 .select-tab_item {
   width: 50%;
   border: none;
-  padding: 10px 8px;
+  padding: 8px 8px;
   text-align: center;
   font-size: 0.78rem;
   font-weight: 700;
@@ -179,52 +179,65 @@ textarea:focus-visible,
 .copy-list {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  margin-top: 20px;
+  margin-top: 14px;
   text-align: left;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
 }
 
 .form-group {
   position: relative;
-  background: var(--panel);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-md);
-  padding: 14px 44px 14px 14px;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  padding: 8px 40px 8px 12px;
   display: flex !important;
-  flex-direction: column;
-  gap: 6px;
-  transition: border-color 0.15s ease;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  transition: background-color 0.15s ease;
+}
+.form-group:last-child {
+  border-bottom: none;
 }
 .form-group:focus-within {
-  border-color: var(--moss);
+  background: var(--moss-tint);
 }
 
 .text-label-copy {
-  width: auto;
+  flex: 0 0 auto;
+  width: 60px;
+  text-align: center;
   font-family: "JetBrains Mono", monospace;
-  font-size: 0.68rem;
+  font-size: 0.65rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--moss-dark);
   background: var(--moss-tint);
   display: inline-block;
-  padding: 2px 8px;
+  padding: 4px 0;
   border-radius: 999px;
-  align-self: flex-start;
+}
+.form-group:focus-within .text-label-copy {
+  background: var(--panel);
 }
 
 .form-control {
-  min-height: 44px;
-  height: 44px;
+  min-height: 36px;
+  height: 36px;
   width: 100%;
   border: none;
   resize: vertical;
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   line-height: 1.4;
   color: var(--ink);
   background: transparent;
-  padding: 0;
+  padding: 6px 0;
 }
 .form-control::placeholder {
   color: #b7bab3;
@@ -235,10 +248,11 @@ textarea:focus-visible,
 
 .copy-icon-btn {
   position: absolute !important;
-  top: 12px;
-  right: 10px;
-  width: 28px;
-  height: 28px;
+  top: 50%;
+  right: 8px;
+  transform: translateY(-50%);
+  width: 26px;
+  height: 26px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -248,7 +262,7 @@ textarea:focus-visible,
   transition: background 0.15s ease, color 0.15s ease;
 }
 .copy-icon-btn:hover {
-  background: var(--moss-tint);
+  background: var(--panel);
   color: var(--moss-dark);
 }
 .icon-sm {
@@ -265,8 +279,8 @@ textarea:focus-visible,
   display: flex;
   gap: 10px;
   justify-content: flex-end;
-  padding: 14px 4px;
-  margin-top: 20px;
+  padding: 10px 4px 4px;
+  margin-top: 14px;
   background: linear-gradient(to top, var(--paper) 60%, transparent);
 }
 
@@ -310,7 +324,7 @@ textarea:focus-visible,
 /* ------------------------------ picture tab ------------------------------ */
 
 .picture-panel {
-  margin-top: 20px;
+  margin-top: 14px;
   background: var(--panel);
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);

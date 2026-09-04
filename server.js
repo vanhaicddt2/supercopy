@@ -30,7 +30,7 @@ app.use(cors());
 app.use(cookieParser());
 
 // Setup Socket.io
-const allowedOrigins = (process.env.ALLOWED_ORIGINS || 'http://localhost:3000,http://localhost:3001,http://localhost:5000,http://localhost:6000').split(',').map((origin) => origin.trim()).filter(Boolean);
+const allowedOrigins = (process.env.ALLOWED_ORIGINS || 'http://localhost:3000,http://localhost:3001,http://localhost:5000,https://supercopy.io.vn/').split(',').map((origin) => origin.trim()).filter(Boolean);
 
 const io = new Server(server, {
   cors: {
